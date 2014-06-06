@@ -1,16 +1,21 @@
-First you have to install git. You can download it from here : http://git-scm.com/downloads
+1. First you have to install git. You can download it from here : http://git-scm.com/downloads
 -----------------------------------------------------------------------------------------------------------------
-After that you have to make a local folder on your pc. This is where you will save the data from the repo.
+
+2. After that you have to make a local folder on your pc. This is where you will save the data from the repo.
 ------------------------------------------------------------------------------------------------------------------
-While inside the folder right click on it and then choose "open git bash here"
+
+3. While inside the folder right click on it and then choose "open git bash here"
 ------------------------------------------------------------------------------------------------------------------
-After that you have to type in the console : 
+
+4. After that you have to type in the console : 
 
 git pull https://github.com/wIksS/Team-Meat     // this downloads all data in the repository to your folder
 ------------------------------------------------------------------------------------------------------------------
-Now you have all files. You can change them, delete them, add new ones.
+
+5. Now you have all files. You can change them, delete them, add new ones.
 ------------------------------------------------------------------------------------------------------------------
-When you have finished your work and you want to commit you have to open git bash again like we did when we wanted to pull the repo.
+
+6. When you have finished your work and you want to commit you have to open git bash again like we did (go back to step 3) when we wanted to pull the repo.
 
 In the console type : 
 
