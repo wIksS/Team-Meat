@@ -20,7 +20,7 @@ git commit -m "Your commit message"
 
 git remote add origin https://github.com/wIksS/Team-Meat.git     // you do this only the first time you commit
 
-git push origin master
+git push origin master 		// Then you are asked for username and password (type your credentials)
 ---------------------------------------------------------------------------------------------------------------
 
 This is how you work with git.
