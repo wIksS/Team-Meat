@@ -58,24 +58,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="intro.html" />
     <Content Include="lib\kinetic-v5.1.0.js" />
     <Content Include="lib\kinetic-v5.1.0.min.js" />
     <Content Include="lib\raphael-min.js" />
     <Content Include="lib\raphael.js" />
+    <Content Include="other\pig.svg" />
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\shapes\circle.js" />
     <Content Include="scripts\shapes\line.js" />
     <Content Include="scripts\shapes\rectangle.js" />
     <Content Include="scripts\shapes\triangle.js" />
     <Content Include="scripts\toolbox.js" />
+    <Content Include="styles\intro.css" />
     <None Include="scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
