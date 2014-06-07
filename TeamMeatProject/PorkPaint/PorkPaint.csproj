@@ -58,6 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="lib\kinetic-v5.1.0.js" />
+    <Content Include="lib\kinetic-v5.1.0.min.js" />
+    <Content Include="lib\raphael-min.js" />
+    <Content Include="lib\raphael.js" />
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\shapes\circle.js" />
     <Content Include="scripts\shapes\line.js" />
@@ -70,7 +74,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lib\" />
     <Folder Include="styles\" />
   </ItemGroup>
   <PropertyGroup>

@@ -3,3 +3,8 @@ C:\Users\Emil\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\bin\PorkPaint
 C:\Users\Emil\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\obj\Debug\PorkPaint.csprojResolveAssemblyReference.cache
 C:\Users\Emil\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\obj\Debug\PorkPaint.dll
 C:\Users\Emil\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\obj\Debug\PorkPaint.pdb
+D:\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\bin\PorkPaint.dll
+D:\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\bin\PorkPaint.pdb
+D:\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\obj\Debug\PorkPaint.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\obj\Debug\PorkPaint.dll
+D:\Documents\GitHub\Team-Meat\TeamMeatProject\PorkPaint\obj\Debug\PorkPaint.pdb
