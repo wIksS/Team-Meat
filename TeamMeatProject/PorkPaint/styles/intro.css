@@ -1,0 +1,52 @@
+﻿/* Super simple CSS for intro screen only - will be refined & added to our main CSS file later */
+html,
+body,
+a
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #261945;
+    color: #fff;
+}
+#wrapper
+{
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+.button
+{
+    border: 1px solid #4B546A;
+    box-shadow: #B7B8B8 0px 1px 0px inset;
+    border-radius: 4px; 
+    font-size: 20px; 
+    padding: 10px; 
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold; 
+    color: #FFFFFF;
+    background-color: #606C88; background-image: -webkit-gradient(linear, left top, left bottom, from(#606C88), to(#3F4C6B));
+    background-image: -webkit-linear-gradient(top, #606C88, #3F4C6B);
+    background-image: -moz-linear-gradient(top, #606C88, #3F4C6B);
+    background-image: -ms-linear-gradient(top, #606C88, #3F4C6B);
+    background-image: -o-linear-gradient(top, #606C88, #3F4C6B);
+    background-image: linear-gradient(to bottom, #606C88, #3F4C6B); filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#606C88, endColorstr=#3F4C6B);
+}
+.button:hover
+{
+    border: 1px solid #4B546A;
+    background-color: #4B546A; 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4B546A), to(#2C354B));
+    background-image: -webkit-linear-gradient(top, #4B546A, #2C354B);
+    background-image: -moz-linear-gradient(top, #4B546A, #2C354B);
+    background-image: -ms-linear-gradient(top, #4B546A, #2C354B);
+    background-image: -o-linear-gradient(top, #4B546A, #2C354B);
+    background-image: linear-gradient(to bottom, #4B546A, #2C354B); filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4B546A, endColorstr=#2C354B);
+}
+footer
+{
+    margin-top: 40px;
+}
