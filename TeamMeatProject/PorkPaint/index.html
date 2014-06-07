@@ -15,16 +15,17 @@
     <script src="lib/raphael.js"></script>
     <script src="scripts/shapes/point.js"></script>
     <script src="scripts/shapes/line.js"></script>
+    <script src="scripts/shapes/triangle.js"></script>
     <script>
         var stage = new Kinetic.Stage({
             container: 'canvas-container',
             width: window.innerWidth,
             height: window.innerHeight
         });
-        var line = new Line(stage,'black',2);
+        var triangle = new Triangle(stage, 'black', 2);
         $('body').on('mousedown', function(e){
             var initMousePosition = new Point(e.pageX, e.pageY);
-            line.draw(initMousePosition);
+            triangle.draw(initMousePosition);
         });
 
     </script>
