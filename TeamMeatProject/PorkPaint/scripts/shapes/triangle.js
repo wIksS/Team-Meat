@@ -1,16 +1,23 @@
-﻿function Triangle(curStage, strokeColor, lineStrokeWidth) {
+﻿function Triangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
     this.draw = function (initMousePosition) {
         var layer = new Kinetic.Layer(),
         isMouseUp = false,
         curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
         initMousePosition = initMousePosition,
-        line = new Kinetic.Line({
-            points: [],
+        line = new Kinetic.Shape({
             stroke: strokeColor,
             strokeWidth: lineStrokeWidth,
-            fill: 'red',
-            drawBorder: true
+            fill: fillColor,
+            drawFunc: function (context) {
+                context.beginPath();
+                context.moveTo(200, 50);
+                context.lineTo(420, 80);
+                context.quadraticCurveTo(300, 100, 260, 170);
+                context.closePath();
+                context.fillStrokeShape(this);
+            }
         });
+
 
         layer.add(line);
         curStage.add(layer);
@@ -39,8 +46,15 @@
             else {
                 thirdPoint = currentX + (initX - currentX) / 2;
             }
-
-            line.setPoints([initX, currentY, currentX, currentY, thirdPoint, initY, initX, currentY]);
+            line.setDrawFunc(function (context) {
+                context.beginPath();
+                context.moveTo(initX, currentY);
+                context.lineTo(currentX, currentY);
+                context.lineTo(thirdPoint, initY);
+                context.lineTo(initX, currentY);
+                context.closePath();
+                context.fillStrokeShape(this);
+            });
             if (isMouseUp) {
                 anim.stop();
             }
