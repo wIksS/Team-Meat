@@ -1,4 +1,4 @@
-﻿function Triangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
+﻿function IsoscelesTriangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
     this.draw = function (initMousePosition) {
         var layer = new Kinetic.Layer(),
         isMouseUp = false,
@@ -8,14 +8,6 @@
             stroke: strokeColor,
             strokeWidth: lineStrokeWidth,
             fill: fillColor,
-            drawFunc: function (context) {
-                context.beginPath();
-                context.moveTo(200, 50);
-                context.lineTo(420, 80);
-                context.quadraticCurveTo(300, 100, 260, 170);
-                context.closePath();
-                context.fillStrokeShape(this);
-            }
         });
 
 

@@ -1,4 +1,4 @@
-﻿function Rectangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
+﻿function RightTriangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
     this.draw = function (initMousePosition) {
         var layer = new Kinetic.Layer(),
         isMouseUp = false,
@@ -9,6 +9,7 @@
             strokeWidth: lineStrokeWidth,
             fill: fillColor,
         });
+
 
         layer.add(line);
         curStage.add(layer);
@@ -40,14 +41,12 @@
             line.setDrawFunc(function (context) {
                 context.beginPath();
                 context.moveTo(initX, initY);
-                context.lineTo(initX, currentY);
+                context.lineTo(initX,currentY);
                 context.lineTo(currentX, currentY);
-                context.lineTo(currentX, initY);
-                context.lineTo(initX, initY);
+                context.lineTo(initX,initY);
                 context.closePath();
                 context.fillStrokeShape(this);
             });
-
             if (isMouseUp) {
                 anim.stop();
             }
