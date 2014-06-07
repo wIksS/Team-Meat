@@ -13,5 +13,20 @@
     <script src="lib/jquery-2.1.1.js"></script>
     <script src="lib/kinetic-v5.1.0.js"></script>
     <script src="lib/raphael.js"></script>
+    <script src="scripts/shapes/point.js"></script>
+    <script src="scripts/shapes/line.js"></script>
+    <script>
+        var stage = new Kinetic.Stage({
+            container: 'canvas-container',
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+        var line = new Line(stage,'black',2);
+        $('body').on('mousedown', function(e){
+            var initMousePosition = new Point(e.pageX, e.pageY);
+            line.draw(initMousePosition);
+        });
+
+    </script>
 </body>
 </html>

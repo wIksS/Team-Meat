@@ -67,6 +67,7 @@
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\shapes\circle.js" />
     <Content Include="scripts\shapes\line.js" />
+    <Content Include="scripts\shapes\point.js" />
     <Content Include="scripts\shapes\rectangle.js" />
     <Content Include="scripts\shapes\triangle.js" />
     <Content Include="scripts\toolbox.js" />
