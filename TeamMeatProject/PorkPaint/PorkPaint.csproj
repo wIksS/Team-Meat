@@ -69,7 +69,8 @@
     <Content Include="scripts\shapes\line.js" />
     <Content Include="scripts\shapes\point.js" />
     <Content Include="scripts\shapes\rectangle.js" />
-    <Content Include="scripts\shapes\triangle.js" />
+    <Content Include="scripts\shapes\isoscelesTriangle.js" />
+    <Content Include="scripts\shapes\rightTriangle.js" />
     <Content Include="scripts\toolbox.js" />
     <Content Include="styles\intro.css" />
     <None Include="scripts\_references.js" />

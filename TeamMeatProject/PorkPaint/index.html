@@ -18,16 +18,18 @@
     <script src="scripts/shapes/rectangle.js"></script>
     <script src="scripts/shapes/isoscelesTriangle.js"></script>
     <script src="scripts/shapes/rightTriangle.js"></script>
+    <script src="scripts/shapes/circle.js"></script>
     <script>
         var stage = new Kinetic.Stage({
             container: 'canvas-container',
             width: window.innerWidth,
             height: window.innerHeight
         });
-        var rectangle = new Rectangle(stage, 'black', 'yellowgreen',2);
+        var rectangle = new Circle(stage, 'black', 'yellowgreen', 2);
+        var layer = new Kinetic.Layer();
         $('body').on('mousedown', function(e){
             var initMousePosition = new Point(e.pageX, e.pageY);
-            rectangle.draw(initMousePosition);
+            rectangle.draw(initMousePosition,layer);
         });
 
     </script>

@@ -1,7 +1,6 @@
 ﻿function IsoscelesTriangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
-    this.draw = function (initMousePosition) {
-        var layer = new Kinetic.Layer(),
-        isMouseUp = false,
+    this.draw = function (initMousePosition, layer) {
+        var isMouseUp = false,
         curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
         initMousePosition = initMousePosition,
         line = new Kinetic.Shape({

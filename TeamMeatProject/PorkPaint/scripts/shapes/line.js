@@ -1,7 +1,6 @@
 ﻿function Line(curStage,strokeColor,lineStrokeWidth) {
-    this.draw = function (initMousePosition) {
-        var layer = new Kinetic.Layer(),
-        isMouseUp = false,
+    this.draw = function (initMousePosition, layer) {
+        var isMouseUp = false,
         curMousePosition,
         line = new Kinetic.Line({
             points: [],
