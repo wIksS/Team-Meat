@@ -28,21 +28,11 @@
     <script src="scripts/shapes/rightTriangle.js"></script>
     <script src="scripts/shapes/circle.js"></script>
 
-    <script src="scripts/engine.js"></script>
     <script src="scripts/toolbox.js"></script>
+    <script src="scripts/engine.js"></script>
 
     <script>
-        var stage = new Kinetic.Stage({
-            container: 'canvas-container',
-            width: 1600,
-            height: 800
-        });
-        var rectangle = new Circle(stage, 'black', 'yellowgreen', 2);
-        var layer = new Kinetic.Layer();
-        $('body').on('mousedown', function(e){
-            var initMousePosition = new Point(e.pageX, e.pageY);
-            rectangle.draw(initMousePosition,layer);
-        });
+        // FOR TESTING PURPOSES
 
     </script>
 </body>

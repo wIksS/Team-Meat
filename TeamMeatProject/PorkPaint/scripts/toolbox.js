@@ -43,17 +43,17 @@ $('#' + controlName).on('click', function () {
 });
 
 // Triangle control
-controlName = 'triangleControl';
+controlName = 'isoTriangleControl';
 addControl(currentControlX, currentControlY, controlName, drawTriangleInnerPicture);
 $('#' + controlName).on('click', function () {
-    eng.setShape('triangle');
+    eng.setShape('isoTriangle');
 });
 
-// Isosceles triangle control
-controlName = 'isoTriangleControl';
+// Right triangle control
+controlName = 'rightTriangleControl';
 addControl(currentControlX, currentControlY, controlName, drawIsoTriangleInnerPicture);
 $('#' + controlName).on('click', function () {
-    eng.setShape('isoTriangle');
+    eng.setShape('rightTriangle');
 });
 
 function addControl(x, y, controlId, drawInnerPictureFunc) {
