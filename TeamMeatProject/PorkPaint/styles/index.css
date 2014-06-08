@@ -1,0 +1,13 @@
+﻿#wrapper {
+    height: 500px;
+    width: 1920px;
+}
+
+#toolbox, #canvas-container {
+    border: 1px solid black;
+    float: left;
+}
+
+#toolbox {
+    margin-right: 10px;
+}

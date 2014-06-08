@@ -72,6 +72,7 @@
     <Content Include="scripts\shapes\isoscelesTriangle.js" />
     <Content Include="scripts\shapes\rightTriangle.js" />
     <Content Include="scripts\toolbox.js" />
+    <Content Include="styles\index.css" />
     <Content Include="styles\intro.css" />
     <None Include="scripts\_references.js" />
   </ItemGroup>

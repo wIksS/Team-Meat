@@ -2,28 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Pork Paint - Release the Piggy Artist Inside You</title>
+    <link href="styles/index.css" rel="stylesheet" />
     <script src="lib/kinetic-v5.1.0.min.js"></script>
     <script src="lib/raphael-min.js"></script>
 </head>
 <body>
-    <div id="toolbox">
-        
+    <div id="wrapper">
+        <div id="toolbox">
+
+        </div>
+
+        <div id="canvas-container">
+
+        </div>
     </div>
-    <div id="canvas-container"></div>
+
     <script src="lib/jquery-2.1.1.js"></script>
     <script src="lib/kinetic-v5.1.0.js"></script>
     <script src="lib/raphael.js"></script>
+
     <script src="scripts/shapes/point.js"></script>
     <script src="scripts/shapes/line.js"></script>
     <script src="scripts/shapes/rectangle.js"></script>
     <script src="scripts/shapes/isoscelesTriangle.js"></script>
     <script src="scripts/shapes/rightTriangle.js"></script>
     <script src="scripts/shapes/circle.js"></script>
+
+    <script src="scripts/engine.js"></script>
+    <script src="scripts/toolbox.js"></script>
+
     <script>
         var stage = new Kinetic.Stage({
             container: 'canvas-container',
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: 1600,
+            height: 800
         });
         var rectangle = new Circle(stage, 'black', 'yellowgreen', 2);
         var layer = new Kinetic.Layer();
