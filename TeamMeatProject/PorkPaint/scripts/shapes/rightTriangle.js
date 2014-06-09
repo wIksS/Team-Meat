@@ -1,5 +1,5 @@
 ﻿function RightTriangle(curStage, strokeColor, fillColor, lineStrokeWidth) {
-    this.draw = function (initMousePosition, layer) {
+    this.draw = function (initMousePosition, layer,marginLeft,marginTop) {
         var isMouseUp = false,
         curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
         initMousePosition = initMousePosition,
@@ -14,7 +14,7 @@
         curStage.add(layer);
 
         $('#canvas-container').on('mousemove', function (e) {
-            curMousePosition = new Point(e.pageX, e.pageY);
+            curMousePosition = new Point((e.pageX | 0) - marginLeft | 0, e.pageY);
         });
         $('body').on('mouseup', function () {
             isMouseUp = true;
@@ -30,7 +30,6 @@
                 currentX = curMousePosition.x | 0,
                 currentY = curMousePosition.y | 0;
             if (initX < currentX) {
-                debugger;
                 var difference = currentX - initX;
                 thirdPoint = initX + (currentX - initX) / 2;
             }

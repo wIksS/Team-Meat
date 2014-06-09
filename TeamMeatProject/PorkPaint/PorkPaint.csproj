@@ -71,6 +71,7 @@
     <Content Include="scripts\shapes\rectangle.js" />
     <Content Include="scripts\shapes\isoscelesTriangle.js" />
     <Content Include="scripts\shapes\rightTriangle.js" />
+    <Content Include="scripts\shapes\shape.js" />
     <Content Include="scripts\toolbox.js" />
     <Content Include="styles\index.css" />
     <Content Include="styles\intro.css" />
@@ -78,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="scripts\shapes\Shape.js.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="scripts\shapes\Shape.js.designer.cs">
+      <DependentUpon>Shape.js.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
