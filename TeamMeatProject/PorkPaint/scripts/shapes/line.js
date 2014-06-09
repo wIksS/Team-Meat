@@ -3,13 +3,12 @@
         var isMouseUp = false,
         curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
         initMousePosition = initMousePosition,
-        line = new Kinetic.Line({
-            points: [],
+        shape = new Kinetic.Shape({
             stroke: strokeColor,
-            strokeWidth: lineStrokeWidth
+            strokeWidth: lineStrokeWidth,
         });
 
-        layer.add(line);
+        layer.add(shape);
         curStage.add(layer);
 
         $('#canvas-container').on('mousemove', function (e) {
@@ -27,7 +26,13 @@
                 initY = initMousePosition.y | 0,
                 currentX = curMousePosition.x | 0,
                 currentY = curMousePosition.y | 0;
-            line.setPoints([initX, initY, currentX, currentControlY]);
+            shape.setDrawFunc(function (context) {
+                context.beginPath();
+                context.moveTo(initX, initY);
+                context.lineTo(currentX, currentY);
+                context.closePath();
+                context.fillStrokeShape(this);
+            });
             if (isMouseUp) {
                 anim.stop();
             }

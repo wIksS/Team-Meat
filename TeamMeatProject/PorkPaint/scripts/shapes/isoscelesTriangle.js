@@ -3,14 +3,14 @@
         var isMouseUp = false,
         curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
         initMousePosition = initMousePosition,
-        line = new Kinetic.Shape({
+        shape = new Kinetic.Shape({
             stroke: strokeColor,
             strokeWidth: lineStrokeWidth,
             fill: fillColor,
         });
 
 
-        layer.add(line);
+        layer.add(shape);
         curStage.add(layer);
 
         $('#canvas-container').on('mousemove', function (e) {
@@ -37,7 +37,7 @@
             else {
                 thirdPoint = currentX + (initX - currentX) / 2;
             }
-            line.setDrawFunc(function (context) {
+            shape.setDrawFunc(function (context) {
                 context.beginPath();
                 context.moveTo(initX, currentY);
                 context.lineTo(currentX, currentY);

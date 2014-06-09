@@ -1,15 +1,15 @@
 ﻿function Circle(curStage, strokeColor, fillColor, lineStrokeWidth) {
-    this.draw = function (initMousePosition,layer,marginLeft,marginTop) {
-     var isMouseUp = false,
-        curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
-        initMousePosition = initMousePosition,
-        line = new Kinetic.Shape({
-            stroke: strokeColor,
-            strokeWidth: lineStrokeWidth,
-            fill: fillColor,
-        });
+    this.draw = function (initMousePosition, layer, marginLeft, marginTop) {
+        var isMouseUp = false,
+           curMousePosition = new Point(initMousePosition.x, initMousePosition.y),
+           initMousePosition = initMousePosition,
+           shape = new Kinetic.Shape({
+               stroke: strokeColor,
+               strokeWidth: lineStrokeWidth,
+               fill: fillColor,
+           });
 
-        layer.add(line);
+        layer.add(shape);
         curStage.add(layer);
 
         $('#canvas-container').on('mousemove', function (e) {
@@ -62,7 +62,7 @@
                 xm = x - w / 2;
                 xe = x - w;
                 middleXMinusControlX = xm + ox;
-                middleXPlusControlX = xm  -ox;
+                middleXPlusControlX = xm - ox;
             }
             if (initY > currentY) {
                 ym = y - h / 2;
@@ -70,7 +70,7 @@
                 middleYMinusControlY = ym + oy;
                 middleYPlusControlY = ym - oy;
             }
-            line.setDrawFunc(function (context) {
+            shape.setDrawFunc(function (context) {
                 context.beginPath();
                 context.moveTo(x, ym);
                 context.bezierCurveTo(x, middleYMinusControlY, middleXMinusControlX, y, xm, y);
@@ -87,4 +87,4 @@
 
         anim.start();
     }
-}      
+}
