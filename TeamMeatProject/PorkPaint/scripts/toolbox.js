@@ -2,6 +2,8 @@
 
 var paper = Raphael('toolbox', 300, 500);
 
+
+
 // Controls attributes
 var controlName;
 var maxControlsPerRow = 3;
@@ -13,6 +15,7 @@ var currentControlY = controlsDefaultMargin;
 var controlsDefaultSize = 50;
 var controlsDefaultBackgroundColor = 'lightgray';
 var controlsDefaultSelectedBackgroundColor = 'darkgray';
+var fillControlDefaultFillColor = 'black';
 var controlsDefaultBorderColor = 'black';
 var controlsDefaultBorderWidth = 3;
 
@@ -42,8 +45,57 @@ drawHorizontalSeparator();
 
 // COLORS CONTROLS
 controlName = 'strokeColor';
-addControl(currentControlX, currentControlY, controlName, drawRectInnerPicture);
+addControl(currentControlX, currentControlY, controlName, drawRectInnerPicture).attr({
+    stroke: eng.getProperties().stroke,
+    'stroke-width': 3
+}).node.id = 'strokeInnerPicture';
+$('#strokeColor').on('click', function () {
+    eng.setColorFocus('stroke');
+    $('#strokeColor').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+    $('#fillColor').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+});
 
+// FILL
+controlName = 'fillColor';
+addControl(currentControlX, currentControlY, controlName, drawRectInnerPicture).attr({
+    fill: eng.getProperties().fill
+}).node.id = 'fillColorInner';
+$('#fillColor').on('click', function () {
+    eng.setColorFocus('fill');
+    $('#fillColor').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+});
+$('#fillColorInner').on('click', function () {
+    eng.setColorFocus('fill');
+    $('#fillColor').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+    $('#strokeColor').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+});
+// END FILL
+
+drawHorizontalSeparator();
+
+// ADD COLORS HERE:
+addControl(currentControlX, currentControlY, 'redColor').attr({
+    fill: 'red'
+});
+attachColorSelectEvent('redColor', 'red');
+
+addControl(currentControlX, currentControlY, 'yellowColor').attr({
+    fill: 'yellow'
+});
+attachColorSelectEvent('yellowColor', 'yellow');
+
+
+// ********************************************* //
 function initiateControl(name, shape, drawInnerPictureFunc) {
     controlName = name;
     addControl(currentControlX, currentControlY, controlName, drawInnerPictureFunc);
@@ -56,8 +108,14 @@ function addControl(x, y, controlId, drawInnerPictureFunc) {
     var control = drawControlBox(x, y);
     control.node.id = controlId;
 
-    var innerPicture = drawInnerPictureFunc(x, y);
-    setInnerPictureAttribs(innerPicture);
+    if (drawInnerPictureFunc) {
+        var innerPicture = drawInnerPictureFunc(x, y);
+        setInnerPictureAttribs(innerPicture);
+        return innerPicture;
+    } else {
+        changeNextControlCoords();
+        return control;
+    }
 }
 
 function drawControlBox(x, y) {
@@ -104,7 +162,7 @@ function drawRectInnerPicture(x, y) {
     var pictureY = y + (controlsDefaultSize - pictureHeight) / 2;
 
     var rectanglePicture = paper.rect(pictureX, pictureY, pictureWidth, pictureHeight);
-
+    
     return rectanglePicture;
 }
 
@@ -170,6 +228,34 @@ function drawHorizontalSeparator() {
     var path = 'M ' + 0 + ' ' + currentControlY + ' L ' + lineLength + ' ' + currentControlY;
     paper.path(path);
 
+    elementsDrawnInCurrentRowCounter = 0;
     currentControlY += controlsDefaultMargin;
     currentControlX = controlsDefaultMargin;
+}
+
+function attachColorSelectEvent(colorControlId, color) {
+    $('#' + colorControlId).on('click', function () {
+        var set = eng.getColorFocus();
+        switch (set) {
+            case 'stroke':
+                eng.setOutlineColor(color);
+                break;
+            case 'fill':
+                eng.setFillColor(color);
+                break;
+        }
+
+        switch (set) {
+            case 'stroke':
+                $('#strokeInnerPicture').attr({
+                    stroke: color
+                });
+                break;
+            case 'fill':
+                $($('#fillColorInner')).attr({
+                    fill: color
+                });
+                break;
+        }
+    });
 }

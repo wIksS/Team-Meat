@@ -1,11 +1,12 @@
 ﻿/// <reference path="_references.js" />
 
 var Engine = function () {
-
     var toolType = 'circle';
     var fillColor = 'yellowgreen';
-    var outlineColor = 'black';
+    var outlineColor = 'blue';
     var outlineWidth = 10;
+
+    var setColorTo = 'stroke';
 
     var toolbox = document.getElementById('toolbox')
     var totalOffset = toolbox.offsetWidth;
@@ -37,8 +38,8 @@ var Engine = function () {
                 break;
         }
 
-        var initMousePosition = new Point(e.pageX - eng.getCanvasOffset(), e.pageY);
-        newFigure.draw(initMousePosition, layer,eng.getCanvasOffset() + 15);
+        var initMousePosition = new Point(e.pageX - totalOffset, e.pageY);
+        newFigure.draw(initMousePosition, layer, totalOffset + 15);
     });
 
     return {
@@ -48,12 +49,21 @@ var Engine = function () {
         },
         setFillColor: function (color) {
             fillColor = color;
+            console.log('fill: ' + color)
         },
         setOutlineColor: function (color) {
             outlineColor = color;
+            console.log('stroke: ' + color)
         },
         setOutlineWidth: function (width) {
             outlineWidth = width;
+        },
+        setColorFocus: function (colorToSetOnPaletteClick) {
+            setColorTo = colorToSetOnPaletteClick;
+            console.log(colorToSetOnPaletteClick);
+        },
+        getColorFocus: function () {
+            return setColorTo;
         },
         getProperties: function () {
             return {
@@ -67,8 +77,6 @@ var Engine = function () {
             return totalOffset;
         }
     }
-
-    // TODO: return vertical offset (toolbox width + margins + etc...)
 }
 
-var eng = new Engine();
+var eng = new Engine(); // REFACTOR!
