@@ -21,34 +21,40 @@ var innerPicturesBackgroundColor = 'none';
 var innerPicturesBorderColor = 'black';
 var innerPicturesBorderWidth = 2;
 
-// SHAPE CONTROLS *************************************************************
 // Rectangle control
-initiateControl('rectControl', 'rect', drawRectInnerPicture)
+controlName = 'rectControl';
+addControl(currentControlX, currentControlY, controlName, drawRectInnerPicture);
+$('#' + controlName).on('click', function () {
+    eng.setShape('rect');
+});
 
 // Line control
-initiateControl('lineControl', 'line', drawLineInnerPicture);
+controlName = 'lineControl';
+addControl(currentControlX, currentControlY, controlName, drawLineInnerPicture);
+$('#' + controlName).on('click', function () {
+    eng.setShape('line');
+});
 
 // Circle control
-initiateControl('circleControl', 'circle', drawCircleInnerPicture);
+controlName = 'circleControl';
+addControl(currentControlX, currentControlY, controlName, drawCircleInnerPicture);
+$('#' + controlName).on('click', function () {
+    eng.setShape('circle');
+});
 
 // Triangle control
-initiateControl('isoTriangleControl', 'isoTriangle', drawIsoTriangleInnerPicture);
+controlName = 'isoTriangleControl';
+addControl(currentControlX, currentControlY, controlName, drawTriangleInnerPicture);
+$('#' + controlName).on('click', function () {
+    eng.setShape('isoTriangle');
+});
 
 // Right triangle control
-initiateControl('rightTriangleControl', 'rightTriangle', drawRightTriangleInnerPicture);
-// SHAPE CONTROLS *************************************************************
-
-drawHorizontalSeparator();
-
-// STROKE WIDTH CONTROLS
-
-function initiateControl(name, shape, drawInnerPictureFunc) {
-    controlName = name;
-    addControl(currentControlX, currentControlY, controlName, drawInnerPictureFunc);
-    $('#' + controlName).on('click', function () {
-        eng.setShape(shape);
-    });
-}
+controlName = 'rightTriangleControl';
+addControl(currentControlX, currentControlY, controlName, drawIsoTriangleInnerPicture);
+$('#' + controlName).on('click', function () {
+    eng.setShape('rightTriangle');
+});
 
 function addControl(x, y, controlId, drawInnerPictureFunc) {
     var control = drawControlBox(x, y);
@@ -127,7 +133,7 @@ function drawCircleInnerPicture(x, y) {
     return circlePicture;
 }
 
-function drawIsoTriangleInnerPicture(x, y) {
+function drawTriangleInnerPicture(x, y) {
     var pictureX = x + controlsDefaultSize / 3;
     var pictureY = y + controlsDefaultSize / 5;
     var line1Length = controlsDefaultSize / 2;
@@ -142,7 +148,7 @@ function drawIsoTriangleInnerPicture(x, y) {
     return trianglePicture;
 }
 
-function drawRightTriangleInnerPicture(x, y) {
+function drawIsoTriangleInnerPicture(x, y) {
     var pictureX = x + controlsDefaultSize / 2.3;
     var pictureY = y + controlsDefaultSize / 5;
     var line1Length = controlsDefaultSize / 2;
@@ -160,11 +166,4 @@ function drawRightTriangleInnerPicture(x, y) {
     text90.attr('font-size', (controlsDefaultSize / 3));
 
     return trianglePicture;
-}
-
-function drawHorizontalSeparator() {
-    currentControlY += controlsDefaultSize + controlsDefaultMargin;
-    var lineLength = paper.width;
-    var path = 'M ' + 0 + ' ' + currentControlY + ' L ' + lineLength + ' ' + currentControlY; 
-    paper.path(path);
 }

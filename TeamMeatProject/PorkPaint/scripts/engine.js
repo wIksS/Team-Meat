@@ -2,8 +2,8 @@
 
 var Engine = function () {
 
-    var toolType = 'rect';
-    var fillColor = 'red';
+    var toolType = 'circle';
+    var fillColor = 'yellowgreen';
     var outlineColor = 'black';
     var outlineWidth = 10;
 
@@ -21,19 +21,24 @@ var Engine = function () {
 
     var layer = new Kinetic.Layer();
 
-    $('body').on('mousedown', function (e) {
+    $('#canvas-container').on('mousedown', function (e) {
         var figureProp = eng.getProperties();
         var newFigure;
         switch (figureProp.tool) {
-            case 'rect': newFigure = new Rectangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth); break;
-            case 'circle': newFigure = new Circle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth); break;
-            case 'line': newFigure = new Line(stage, figureProp.stroke, figureProp.strokeWidth); break;
-            case 'isoTriangle': newFigure = new IsoscelesTriangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth); break;
-            case 'rightTriangle': newFigure = new RightTriangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth); break;
+            case 'rect': newFigure = new Rectangle(stage, figureProp.stroke,figureProp.fill, figureProp.strokeWidth);
+                break;
+            case 'circle': newFigure = new Circle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth);
+                break;
+            case 'line': newFigure = new Line(stage, figureProp.stroke, figureProp.strokeWidth);
+                break;
+            case 'isoTriangle': newFigure = new IsoscelesTriangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth);
+                break;
+            case 'rightTriangle': newFigure = new RightTriangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth);
+                break;
         }
 
         var initMousePosition = new Point(e.pageX - eng.getCanvasOffset(), e.pageY);
-        newFigure.draw(initMousePosition, layer);
+        newFigure.draw(initMousePosition, layer,eng.getCanvasOffset() + 15);
     });
 
     return {
