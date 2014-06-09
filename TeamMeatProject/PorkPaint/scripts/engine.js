@@ -24,22 +24,24 @@ var Engine = function () {
 
     $('#canvas-container').on('mousedown', function (e) {
         var figureProp = eng.getProperties();
-        var newFigure;
+        var initMousePosition = new Point(e.pageX - totalOffset, e.pageY);
+
+        var shape = new Kinetic.Shape();
+        var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffset + 15);
+
         switch (figureProp.tool) {
-            case 'rect': newFigure = new Rectangle(stage, figureProp.stroke,figureProp.fill, figureProp.strokeWidth);
+            case 'rect': newFigure.drawRectangle();
                 break;
-            case 'circle': newFigure = new Circle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth);
+            case 'circle': newFigure.drawCircle();
                 break;
-            case 'line': newFigure = new Line(stage, figureProp.stroke, figureProp.strokeWidth);
+            case 'line': newFigure.drawLine();
                 break;
-            case 'isoTriangle': newFigure = new IsoscelesTriangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth);
+            case 'isoTriangle': newFigure.drawIsoscelesTriangle();
                 break;
-            case 'rightTriangle': newFigure = new RightTriangle(stage, figureProp.stroke, figureProp.fill, figureProp.strokeWidth);
+            case 'rightTriangle': newFigure.drawRightTriangle();
                 break;
         }
 
-        var initMousePosition = new Point(e.pageX - totalOffset, e.pageY);
-        newFigure.draw(initMousePosition, layer, totalOffset + 15);
     });
 
     return {
