@@ -57,14 +57,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="images\sandpaper.png" />
+    <Content Include="images\fork-me-on-github.png" />
+    <Content Include="images\background-sandpaper.png" />
     <Content Include="index.html" />
     <Content Include="intro.html" />
     <Content Include="lib\kinetic-v5.1.0.js" />
     <Content Include="lib\kinetic-v5.1.0.min.js" />
     <Content Include="lib\raphael-min.js" />
     <Content Include="lib\raphael.js" />
-    <Content Include="images\pig.svg" />
+    <Content Include="images\intro-pig.svg" />
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\shapes\circle.js" />
     <Content Include="scripts\shapes\line.js" />
