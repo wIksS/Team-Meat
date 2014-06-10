@@ -10,15 +10,11 @@
     this.shape = shape;
 }
 Shape.prototype.draw = function (shape) {
-    var self = this;
+    var self = this,
+        mousePosition = self.curStage.getPointerPosition();
     self.isMouseUp = false;
     self.curMousePosition = new Point(self.initMousePosition.x, self.initMousePosition.y);
     self.initMousePosition = self.initMousePosition;
-    //self.shape = new Kinetic.Shape({
-    //    stroke: self.strokeColor,
-    //    strokeWidth: self.lineStrokeWidth,
-    //    fill: self.fillColor,
-    //});
 
     self.shape.setStroke(self.strokeColor);
     self.shape.setStrokeWidth(self.lineStrokeWidth);
@@ -27,7 +23,7 @@ Shape.prototype.draw = function (shape) {
     self.curStage.add(self.layer);
 
     $('#canvas-container').on('mousemove', function (e) {
-        self.curMousePosition = new Point((e.pageX | 0) - self.marginLeft | 0, e.pageY);
+        self.curMousePosition = new Point((e.pageX | 0) - self.marginLeft | 0, e.pageY - self.marginTop);
     });
     $('body').on('mouseup', function () {
         self.isMouseUp = true;

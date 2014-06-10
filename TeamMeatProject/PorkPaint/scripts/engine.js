@@ -9,7 +9,8 @@ var Engine = function () {
     var setColorTo = 'stroke';
 
     var toolbox = document.getElementById('toolbox')
-    var totalOffset = toolbox.offsetWidth;
+    var totalOffsetX = toolbox.offsetWidth -490;
+    var totalOffSetY = 27;
 
     // ***************************
     // Should move to index.js and pass to Engine as parameter
@@ -24,7 +25,7 @@ var Engine = function () {
     $('#canvas-container').on('mousedown', function (e) {
         var layer = new Kinetic.Layer();
         var figureProp = eng.getProperties();
-        var initMousePosition = new Point(e.pageX - totalOffset, e.pageY);
+        var initMousePosition = new Point(e.pageX - totalOffsetX, e.pageY);
 
         var shape = new Kinetic.Shape();
         shape.setDraggable(true);
@@ -32,7 +33,7 @@ var Engine = function () {
 
      //   addRemoveEvent(shape, layer);
 
-        var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffset + 15);
+        var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX,totalOffSetY );
       
         switch (figureProp.tool) {
             case 'rect': newFigure.drawRectangle();
