@@ -36,6 +36,15 @@ createShapeControl('isoTriangleControl', 'isoTriangle', drawIsoTriangleInnerPict
 
 // Right triangle control
 createShapeControl('rightTriangleControl', 'rightTriangle', drawRightTriangleInnerPicture);
+
+// Remove control
+createShapeControl('removeControl', 'rect', drawRemoveInnerPicture);
+
+// Drag and Drop control
+createShapeControl('dragAndDropControl', 'rect', drawDragAndDropInnerPicture);
+
+// Tube control
+createShapeControl('tubeControl', 'rect', drawTubeInnerPicture);
 // SHAPE CONTROLS *************************************************************
 
 drawHorizontalSeparator(); // <------------- separator between shape controls and fill/stroke controls
@@ -302,7 +311,31 @@ function drawHorizontalSeparator() {
     currentControlY += controlsDefaultMargin;
     currentControlX = controlsDefaultMargin;
 }
-
+//Draw remove box inner marker
+function drawRemoveInnerPicture() {
+    var letterX = paper.text(225, 25, 'X');
+    letterX.attr({
+        'font-size': 12,
+        'font-weight': 'bold'
+    });
+    return letterX;
+}
+//Draw drag and drop box inner marker
+function drawDragAndDropInnerPicture() {
+    var letterD = paper.text(265, 25, 'D');
+    letterD.attr({
+        'font-size': 12
+    });
+    return letterD;
+}
+//Draw tube box inner marker
+function drawTubeInnerPicture() {
+    var letterT = paper.text(305, 25, 'T');
+    letterT.attr({
+        'font-size': 12
+    });
+    return letterT;
+}
 // Attaches event handlers to a color box
 function attachColorSelectEvent(colorControlId, color) {
     $('#' + colorControlId).on('click', function () {

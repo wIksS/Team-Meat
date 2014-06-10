@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="images\fork-me-on-github.png" />
     <Content Include="images\background-sandpaper.png" />
+    <Content Include="images\paper-big.png" />
     <Content Include="index.html" />
     <Content Include="intro.html" />
     <Content Include="lib\kinetic-v5.1.0.js" />
