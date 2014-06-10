@@ -64,7 +64,7 @@
     <Content Include="lib\kinetic-v5.1.0.min.js" />
     <Content Include="lib\raphael-min.js" />
     <Content Include="lib\raphael.js" />
-    <Content Include="other\pig.svg" />
+    <Content Include="images\pig.svg" />
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\shapes\circle.js" />
     <Content Include="scripts\shapes\line.js" />
