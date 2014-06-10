@@ -8,6 +8,8 @@ var Engine = function () {
 
     var setColorTo = 'stroke';
 
+    var shapes = [];
+
     var toolbox = document.getElementById('toolbox')
     var totalOffsetX = toolbox.offsetWidth -490;
     var totalOffSetY = 27;
@@ -28,10 +30,17 @@ var Engine = function () {
         var initMousePosition = new Point(e.pageX - totalOffsetX, e.pageY);
 
         var shape = new Kinetic.Shape();
-        shape.setDraggable(true);
+        shapes.push(shape);
+        switch (figureProp.tool) {
+            case 'dragAndDrop': addDragAndDrop(shapes,true);return;
+                break;
+        }
+
+        addDragAndDrop(shapes, false);
+
         layer.add(shape);
 
-     //   addRemoveEvent(shape, layer);
+        addRemoveEvent(shape, layer);
 
         var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX,totalOffSetY );
       
@@ -47,13 +56,21 @@ var Engine = function () {
             case 'rightTriangle': newFigure.drawRightTriangle();
                 break;
         }
-
     });
 
     function addRemoveEvent(shape,layer) {
         shape.on('click', function () {
-            shape.off('click'); layer.remove(shape);
+            console.log(toolType);
+            if (toolType == 'remove') {
+                layer.remove(shape);
+            }
         });
+    }
+
+    function addDragAndDrop(shapes, isDrag) {
+        for (var i = 0; i < shapes.length; i++) {
+            shapes[i].setDraggable(isDrag);
+        }
     }
 
     return {

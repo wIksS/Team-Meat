@@ -38,13 +38,13 @@ createShapeControl('isoTriangleControl', 'isoTriangle', drawIsoTriangleInnerPict
 createShapeControl('rightTriangleControl', 'rightTriangle', drawRightTriangleInnerPicture);
 
 // Remove control
-createShapeControl('removeControl', 'rect', drawRemoveInnerPicture);
+createShapeControl('removeControl', 'remove', drawRemoveInnerPicture);
 
 // Drag and Drop control
-createShapeControl('dragAndDropControl', 'rect', drawDragAndDropInnerPicture);
+createShapeControl('dragAndDropControl', 'dragAndDrop', drawDragAndDropInnerPicture);
 
 // Tube control
-createShapeControl('tubeControl', 'rect', drawTubeInnerPicture);
+createShapeControl('tubeControl', 'tube', drawTubeInnerPicture);
 // SHAPE CONTROLS *************************************************************
 
 drawHorizontalSeparator(); // <------------- separator between shape controls and fill/stroke controls
