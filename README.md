@@ -3,3 +3,4 @@ Emo was here!
 Todorov was here!
 Stoyan Berov was here!
 Vanina joined the team!
+Vanina update
