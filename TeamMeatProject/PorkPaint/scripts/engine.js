@@ -27,10 +27,10 @@ var Engine = function () {
         var initMousePosition = new Point(e.pageX - totalOffset, e.pageY);
 
         var shape = new Kinetic.Shape();
+        shape.setDraggable(true);
         layer.add(shape);
 
-        addRemoveEvent(shape, layer);
-
+     //   addRemoveEvent(shape, layer);
 
         var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffset + 15);
       
