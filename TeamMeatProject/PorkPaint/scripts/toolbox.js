@@ -265,15 +265,15 @@ function drawCircleInnerPicture(x, y) {
 
 // Draws a triangle in a control box by given x, y of the control box
 function drawIsoTriangleInnerPicture(x, y) {
-    var pictureX = x + controlsDefaultSize / 3;
+    var pictureX = x + controlsDefaultSize / 2;
     var pictureY = y + controlsDefaultSize / 5;
-    var line1Length = controlsDefaultSize / 2;
-    var line2Length = controlsDefaultSize / 1.5;
+    var point2X = controlsDefaultSize / 3.33;
+    var point2Y = controlsDefaultSize / 1.66;
+    var point3X = controlsDefaultSize / 1.66;
 
     var path = 'M' + pictureX + ' ' + pictureY +
-               ' L ' + (pictureX + line1Length) + ' ' + pictureY +
-               ' L ' + pictureX + ' ' + (pictureY + line2Length) +
-               ' L ' + pictureX + ' ' + pictureY;
+               ' l-' + point2X + ' ' + point2Y +
+               ' h ' + point3X + ' ' + 'z';
     var trianglePicture = paper.path(path);
 
     return trianglePicture;
@@ -281,21 +281,27 @@ function drawIsoTriangleInnerPicture(x, y) {
 
 // Draws a triangle and a 90 degrees sign in a control box by given x, y of the control box
 function drawRightTriangleInnerPicture(x, y) {
-    var pictureX = x + controlsDefaultSize / 2.3;
+    var pictureX = x + controlsDefaultSize / 5;
     var pictureY = y + controlsDefaultSize / 5;
-    var line1Length = controlsDefaultSize / 2;
-    var line2Length = controlsDefaultSize / 1.5;
+    var point2Y = controlsDefaultSize / 1.66;
+    var point3X = controlsDefaultSize / 1.66;
 
     var path = 'M' + pictureX + ' ' + pictureY +
-               ' L ' + (pictureX + line1Length) + ' ' + pictureY +
-               ' L ' + pictureX + ' ' + (pictureY + line2Length) +
-               ' L ' + pictureX + ' ' + pictureY;
+               ' v ' + point2Y +
+               ' h ' + point3X + ' z';
     var trianglePicture = paper.path(path);
 
-    var textX = x + controlsDefaultSize / 4.5;
-    var textY = y + controlsDefaultSize / 2;
-    var text90 = paper.text(textX, textY, '90');
-    text90.attr('font-size', (controlsDefaultSize / 3));
+    var angleX = x + controlsDefaultSize / 5;
+    var angleY = y + controlsDefaultSize / 1.25;
+    var angleRadius = controlsDefaultSize / 5;
+
+    paper.path(arc([angleX, angleY], angleRadius, 270, 360));
+
+    var pointX = x + controlsDefaultSize / 3.448;
+    var pointY = y + controlsDefaultSize / 1.408;
+    var pointRadius = controlsDefaultSize / 70;
+
+    paper.circle(pointX, pointY, pointRadius);
 
     return trianglePicture;
 }
@@ -371,3 +377,25 @@ function attachColorSelectEvent(colorControlId, color) {
         }
     });
 }
+
+// Functions for drawing arcs with Raphael svg
+function arc(center, radius, startAngle, endAngle) {
+    angle = startAngle;
+    coords = toCoords(center, radius, angle);
+    path = "M " + coords[0] + " " + coords[1];
+    while (angle <= endAngle) {
+        coords = toCoords(center, radius, angle);
+        path += " L " + coords[0] + " " + coords[1];
+        angle += 1;
+    }
+    return path;
+}
+
+function toCoords(center, radius, angle) {
+    var radians = (angle / 180) * Math.PI;
+    var x = center[0] + Math.cos(radians) * radius;
+    var y = center[1] + Math.sin(radians) * radius;
+    return [x, y];
+}
+
+// ---- end of drawing arcs functions
