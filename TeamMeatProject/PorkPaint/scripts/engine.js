@@ -20,15 +20,20 @@ var Engine = function () {
     });
     // **************************
 
-    var layer = new Kinetic.Layer();
 
     $('#canvas-container').on('mousedown', function (e) {
+        var layer = new Kinetic.Layer();
         var figureProp = eng.getProperties();
         var initMousePosition = new Point(e.pageX - totalOffset, e.pageY);
 
         var shape = new Kinetic.Shape();
-        var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffset + 15);
+        layer.add(shape);
 
+        addRemoveEvent(shape, layer);
+
+
+        var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffset + 15);
+      
         switch (figureProp.tool) {
             case 'rect': newFigure.drawRectangle();
                 break;
@@ -43,6 +48,12 @@ var Engine = function () {
         }
 
     });
+
+    function addRemoveEvent(shape,layer) {
+        shape.on('click', function () {
+            shape.off('click'); layer.remove(shape);
+        });
+    }
 
     return {
         setShape: function (type) {

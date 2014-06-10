@@ -24,7 +24,6 @@ Shape.prototype.draw = function (shape) {
     self.shape.setStrokeWidth(self.lineStrokeWidth);
     self.shape.setFill(self.fillColor);
 
-    self.layer.add(self.shape);
     self.curStage.add(self.layer);
 
     $('#canvas-container').on('mousemove', function (e) {
