@@ -1,10 +1,8 @@
 ﻿/// <reference path="_references.js" />
+// TODO: Modulize the toolbox
+var paper = Raphael('toolbox', 300, 500); // TODO: Pass toolbox as parameter
 
-var paper = Raphael('toolbox', 300, 500);
-
-
-
-// Controls attributes
+// --------- Controls attributes
 var controlName;
 var maxControlsPerRow = 3;
 var elementsDrawnInCurrentRowCounter = 0;
@@ -15,37 +13,36 @@ var currentControlY = controlsDefaultMargin;
 var controlsDefaultSize = 50;
 var controlsDefaultBackgroundColor = 'lightgray';
 var controlsDefaultSelectedBackgroundColor = 'darkgray';
-var fillControlDefaultFillColor = 'black';
 var controlsDefaultBorderColor = 'black';
 var controlsDefaultBorderWidth = 3;
 
-// Inner pictures attributes
+// ----------------------  Inner pictures attributes
 var innerPicturesBackgroundColor = 'none';
 var innerPicturesBorderColor = 'black';
 var innerPicturesBorderWidth = 2;
 
 // SHAPE CONTROLS *************************************************************
 // Rectangle control
-initiateControl('rectControl', 'rect', drawRectInnerPicture);
+createShapeControl('rectControl', 'rect', drawRectInnerPicture);
 
 // Line control
-initiateControl('lineControl', 'line', drawLineInnerPicture);
+createShapeControl('lineControl', 'line', drawLineInnerPicture);
 
 // Circle control
-initiateControl('circleControl', 'circle', drawCircleInnerPicture);
+createShapeControl('circleControl', 'circle', drawCircleInnerPicture);
 
 // Triangle control
-initiateControl('isoTriangleControl', 'isoTriangle', drawIsoTriangleInnerPicture);
+createShapeControl('isoTriangleControl', 'isoTriangle', drawIsoTriangleInnerPicture);
 
 // Right triangle control
-initiateControl('rightTriangleControl', 'rightTriangle', drawRightTriangleInnerPicture);
+createShapeControl('rightTriangleControl', 'rightTriangle', drawRightTriangleInnerPicture);
 // SHAPE CONTROLS *************************************************************
 
-drawHorizontalSeparator();
+drawHorizontalSeparator(); // <------------- separator between shape controls and fill/stroke controls
 
-// COLORS CONTROLS
+// FILL AND STROKE CONTROLS *************************************************************
 controlName = 'strokeColor';
-addControl(currentControlX, currentControlY, controlName, drawRectInnerPicture).attr({
+createControl(currentControlX, currentControlY, controlName, drawRectInnerPicture).attr({
     stroke: eng.getProperties().stroke,
     'stroke-width': 3
 }).node.id = 'strokeInnerPicture';
@@ -59,9 +56,9 @@ $('#strokeColor').on('click', function () {
     });
 });
 
-// FILL
+// --------------- FILL CONTROL START --------------------
 controlName = 'fillColor';
-addControl(currentControlX, currentControlY, controlName, drawRectInnerPicture).attr({
+createControl(currentControlX, currentControlY, controlName, drawRectInnerPicture).attr({
     fill: eng.getProperties().fill
 }).node.id = 'fillColorInner';
 $('#fillColor').on('click', function () {
@@ -79,45 +76,48 @@ $('#fillColorInner').on('click', function () {
         fill: controlsDefaultBackgroundColor
     });
 });
-// END FILL
+// --------------- FILL CONTROL END --------------------
 
-drawHorizontalSeparator();
+drawHorizontalSeparator(); // <------------- separator between fill/stroke controls and colors controls
 
-// ADD COLORS HERE:
-addControl(currentControlX, currentControlY, 'redColor').attr({
+// COLORS CONTORLS *************************************************************
+// ADD COLORS HERE. // Colors controls don't have inner pictures //
+createControl(currentControlX, currentControlY, 'redColor').attr({
     fill: 'red'
 });
 attachColorSelectEvent('redColor', 'red');
 
-addControl(currentControlX, currentControlY, 'yellowColor').attr({
+createControl(currentControlX, currentControlY, 'yellowColor').attr({
     fill: 'yellow'
 });
 attachColorSelectEvent('yellowColor', 'yellow');
 
-
-// ********************************************* //
-function initiateControl(name, shape, drawInnerPictureFunc) {
+// FUNCTIONS ********************************************* //
+// Creates a new shape control
+function createShapeControl(name, shape, drawInnerPictureFunc) {
     controlName = name;
-    addControl(currentControlX, currentControlY, controlName, drawInnerPictureFunc);
+    createControl(currentControlX, currentControlY, controlName, drawInnerPictureFunc);
     $('#' + controlName).on('click', function () {
         eng.setShape(shape);
     });
 }
 
-function addControl(x, y, controlId, drawInnerPictureFunc) {
+// Draws a new control box and its inner picture if applicable
+function createControl(x, y, controlId, drawInnerPictureFunc) {
     var control = drawControlBox(x, y);
     control.node.id = controlId;
 
     if (drawInnerPictureFunc) {
         var innerPicture = drawInnerPictureFunc(x, y);
-        setInnerPictureAttribs(innerPicture);
+        setDefaultAttributes(innerPicture);
         return innerPicture;
     } else {
-        changeNextControlCoords();
+        moveCoordinatesToNextValidPosition();
         return control;
     }
 }
 
+// Draws a control box at given coordinates
 function drawControlBox(x, y) {
     var newRect = paper.rect(x, y, controlsDefaultSize, controlsDefaultSize);
     newRect.attr({
@@ -129,17 +129,19 @@ function drawControlBox(x, y) {
     return newRect;
 }
 
-function setInnerPictureAttribs(picture) {
+// Applies the default attributes to svg element
+function setDefaultAttributes(picture) {
     picture.attr({
         fill: innerPicturesBackgroundColor,
         stroke: innerPicturesBorderColor,
         'stroke-width': innerPicturesBorderWidth
     });
 
-    changeNextControlCoords();
+    moveCoordinatesToNextValidPosition();
 }
 
-function changeNextControlCoords() {
+// Sets the x and y of the next control to valid ones
+function moveCoordinatesToNextValidPosition() {
     elementsDrawnInCurrentRowCounter++;
     if (elementsDrawnInCurrentRowCounter === maxControlsPerRow) {
         currentControlY += controlsDefaultSize + controlsDefaultMargin;
@@ -152,6 +154,7 @@ function changeNextControlCoords() {
 }
 
 // Inner pictures
+// Draws a rectangle in a control box by given x, y of the control box
 function drawRectInnerPicture(x, y) {
     var padding = controlsDefaultSize / 5; // guarantees central positioning
     // Width and height are different in order to visualize a rectange, not a square
@@ -166,6 +169,7 @@ function drawRectInnerPicture(x, y) {
     return rectanglePicture;
 }
 
+// Draws a line in a control box by given x, y of the control box
 function drawLineInnerPicture(x, y) {
     var pictureX = x + controlsDefaultSize / 5;
     var pictureY = y + controlsDefaultSize / 2;
@@ -177,6 +181,7 @@ function drawLineInnerPicture(x, y) {
     return linePicture;
 }
 
+// Draws a circle in a control box by given x, y of the control box
 function drawCircleInnerPicture(x, y) {
     var pictureX = x + controlsDefaultSize / 2;
     var pictureY = y + controlsDefaultSize / 2;
@@ -187,6 +192,7 @@ function drawCircleInnerPicture(x, y) {
     return circlePicture;
 }
 
+// Draws a triangle in a control box by given x, y of the control box
 function drawIsoTriangleInnerPicture(x, y) {
     var pictureX = x + controlsDefaultSize / 3;
     var pictureY = y + controlsDefaultSize / 5;
@@ -202,6 +208,7 @@ function drawIsoTriangleInnerPicture(x, y) {
     return trianglePicture;
 }
 
+// Draws a triangle and a 90 degrees sign in a control box by given x, y of the control box
 function drawRightTriangleInnerPicture(x, y) {
     var pictureX = x + controlsDefaultSize / 2.3;
     var pictureY = y + controlsDefaultSize / 5;
@@ -222,6 +229,7 @@ function drawRightTriangleInnerPicture(x, y) {
     return trianglePicture;
 }
 
+// Draws a horizontal line in the toolbox at an even margin from the top and the controls it separates
 function drawHorizontalSeparator() {
     currentControlY += controlsDefaultSize + controlsDefaultMargin;
     var lineLength = paper.width;
@@ -233,6 +241,7 @@ function drawHorizontalSeparator() {
     currentControlX = controlsDefaultMargin;
 }
 
+// Attaches event handlers to a color box
 function attachColorSelectEvent(colorControlId, color) {
     $('#' + colorControlId).on('click', function () {
         var set = eng.getColorFocus();
