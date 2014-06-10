@@ -15,8 +15,8 @@ var Engine = function () {
     // Should move to index.js and pass to Engine as parameter
     var stage = new Kinetic.Stage({
         container: 'canvas-container',
-        width: 1600,
-        height: 800
+        width: 800,
+        height: 500
     });
     // **************************
 
