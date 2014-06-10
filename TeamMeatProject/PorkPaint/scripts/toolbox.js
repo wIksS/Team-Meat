@@ -93,12 +93,12 @@ var input = document.createElement('input');
 input.setAttribute("type", "color");
 input.setAttribute("id", "setColor");
 body.appendChild(input).style.visibility = "hidden";
-
+var input = document.querySelector('#setColor');
 createControl(currentControlX, currentControlY, 'colorSelector', drawRectInnerPicture).attr({
     fill: input.value
 }).node.id = 'colorSelectorInner';
 
-
+/*
 $('#colorSelector').on('click', function () {
     input.click();
     $($('#colorSelectorInner')).attr({
@@ -111,8 +111,12 @@ $('#colorSelectorInner').on('click', function () {
         fill: input.value
     });
 });
+*/
+var getColorFromInput = input.value;
 
-attachColorSelectEvent('colorSelector', input.value);
+attachColorSelectEvent('colorSelector', getColorFromInput);
+attachColorSelectEvent('colorSelectorInner', getColorFromInput);
+//input.click();
 
 //--------------
 var colorPalette = [
@@ -306,6 +310,9 @@ function attachColorSelectEvent(colorControlId, color) {
             var input = document.querySelector('input');
             input.click();
             color = input.value;
+            $($('#colorSelectorInner')).attr({
+                fill: color
+            });
         }
         var set = eng.getColorFocus();
         switch (set) {
