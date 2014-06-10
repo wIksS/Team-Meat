@@ -66,6 +66,9 @@ $('#fillColor').on('click', function () {
     $('#fillColor').attr({
         fill: controlsDefaultSelectedBackgroundColor
     });
+    $('#strokeColor').attr({
+        fill: controlsDefaultBackgroundColor
+    });
 });
 $('#fillColorInner').on('click', function () {
     eng.setColorFocus('fill');
@@ -83,6 +86,35 @@ drawHorizontalSeparator(); // <------------- separator between fill/stroke contr
 // COLORS CONTORLS *************************************************************
 // ADD COLORS HERE. // Colors controls don't have inner pictures //
 
+
+//  Iнput type color
+var body = document.querySelector('body');
+var input = document.createElement('input');
+input.setAttribute("type", "color");
+input.setAttribute("id", "setColor");
+body.appendChild(input).style.visibility = "hidden";
+
+createControl(currentControlX, currentControlY, 'colorSelector', drawRectInnerPicture).attr({
+    fill: input.value
+}).node.id = 'colorSelectorInner';
+
+
+$('#colorSelector').on('click', function () {
+    input.click();
+    $($('#colorSelectorInner')).attr({
+        fill: input.value
+    });
+});
+$('#colorSelectorInner').on('click', function () {
+    input.click();
+    $($('#colorSelectorInner')).attr({
+        fill: input.value
+    });
+});
+
+attachColorSelectEvent('colorSelector', input.value);
+
+//--------------
 var colorPalette = [
     { name: 'black', value: '#000' },
     { name: 'white', value: '#FFF' },
@@ -270,6 +302,11 @@ function drawHorizontalSeparator() {
 // Attaches event handlers to a color box
 function attachColorSelectEvent(colorControlId, color) {
     $('#' + colorControlId).on('click', function () {
+        if (colorControlId === 'colorSelector' || colorControlId === 'colorSelectorInner') {
+            var input = document.querySelector('input');
+            input.click();
+            color = input.value;
+        }
         var set = eng.getColorFocus();
         switch (set) {
             case 'stroke':
