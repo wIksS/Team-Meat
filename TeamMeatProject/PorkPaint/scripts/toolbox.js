@@ -1,20 +1,20 @@
 ﻿/// <reference path="_references.js" />
 // TODO: Modulize the toolbox
-var paper = Raphael('toolbox', 270, 720); // TODO: Pass toolbox as parameter
+var paper = Raphael('toolbox', 780, 145); // TODO: Pass toolbox as parameter
 
 // --------- Controls attributes
 var controlName;
-var maxControlsPerRow = 3;
+var maxControlsPerRow = 16;
 var elementsDrawnInCurrentRowCounter = 0;
-var controlsDefaultMargin = 30;
+var controlsDefaultMargin = 10;
 var currentControlX = controlsDefaultMargin;
 var currentControlY = controlsDefaultMargin;
 
-var controlsDefaultSize = 50;
+var controlsDefaultSize = 30;
 var controlsDefaultBackgroundColor = 'lightgray';
 var controlsDefaultSelectedBackgroundColor = 'darkgray';
-var controlsDefaultBorderColor = 'black';
-var controlsDefaultBorderWidth = 3;
+var controlsDefaultBorderColor = '#333';
+var controlsDefaultBorderWidth = 1;
 
 // ----------------------  Inner pictures attributes
 var innerPicturesBackgroundColor = 'none';

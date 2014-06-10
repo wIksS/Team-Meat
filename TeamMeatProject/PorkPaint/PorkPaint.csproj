@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\sandpaper.png" />
     <Content Include="index.html" />
     <Content Include="intro.html" />
     <Content Include="lib\kinetic-v5.1.0.js" />

@@ -1,13 +1,22 @@
-﻿#wrapper {
-    height: 500px;
-    width: 1920px;
+﻿body {
+    padding-top: 5px;
+    background:url('/images/sandpaper.png');
 }
-
-#toolbox, #canvas-container {
-    border: 1px solid black;
-    float: left;
+#wrapper {
+    width: 780px;
+    margin: 0 auto;
+    background: #EEE;
+    height: 600px;
+    border-radius: 8px;
+    padding: 15px;
+}
+#canvas-container {
+    background: white;
+    border: 1px solid #bbb;
 }
 
 #toolbox {
-    margin-right: 10px;
+    margin-top: 15px;
+    border: 1px solid #AAA;
+    border-radius: 8px;
 }
