@@ -10,7 +10,7 @@
             currentX = self.curMousePosition.x | 0,
             currentY = self.curMousePosition.y | 0;
 
-        shape.setDrawFunc(function (context) {
+        self.shape.setDrawFunc(function (context) {
             context.beginPath();
             context.moveTo(initX, initY);
             context.lineTo(currentX, currentY);
