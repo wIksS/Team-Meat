@@ -1,6 +1,6 @@
 ﻿/// <reference path="_references.js" />
 // TODO: Modulize the toolbox
-var paper = Raphael('toolbox', 300, 500); // TODO: Pass toolbox as parameter
+var paper = Raphael('toolbox', 270, 720); // TODO: Pass toolbox as parameter
 
 // --------- Controls attributes
 var controlName;
@@ -82,15 +82,41 @@ drawHorizontalSeparator(); // <------------- separator between fill/stroke contr
 
 // COLORS CONTORLS *************************************************************
 // ADD COLORS HERE. // Colors controls don't have inner pictures //
-createControl(currentControlX, currentControlY, 'redColor').attr({
-    fill: 'red'
-});
-attachColorSelectEvent('redColor', 'red');
 
-createControl(currentControlX, currentControlY, 'yellowColor').attr({
-    fill: 'yellow'
-});
-attachColorSelectEvent('yellowColor', 'yellow');
+var colorPalette = [
+    { name: 'black', value: '#000' },
+    { name: 'white', value: '#FFF' },
+    { name: 'gray', value: '#a0a0a0' },
+    { name: 'yellow', value: '#fef200' },
+    { name: 'yellowOrange', value: '#fcb712' },
+    { name: 'orange', value: '#f68a1e' },
+    { name: 'orangeRed', value: '#f05922' },
+    { name: 'red', value: '#ec1a23' },
+    { name: 'redViolet', value: '#b52266' },
+    { name: 'violet', value: '#652b8f' },
+    { name: 'violetBlue', value: '#524ea2' },
+    { name: 'blue', value: '#0076b2' },
+    { name: 'blueGreen', value: '#6cc7be' },
+    { name: 'green', value: '#00a44e' },
+    { name: 'greenYellow', value: '#add036' },
+];
+
+drawColorPalette(colorPalette);
+
+function drawColorPalette(colorPalette){
+    for (var i = 0; i < colorPalette.length; i++) {
+
+        var colorName = colorPalette[i].name + 'Color';
+        var colorValue = colorPalette[i].value;
+
+        createControl(currentControlX, currentControlY, colorName).attr({
+            fill: colorValue
+        });
+        attachColorSelectEvent(colorName, colorValue);
+    }
+}
+
+
 
 // FUNCTIONS ********************************************* //
 // Creates a new shape control
