@@ -25,7 +25,6 @@ Shape.prototype.draw = function (shape) {
     $('#canvas-container').on('mousemove', function (e) {
         x = e.pageX - this.offsetLeft;//- this.offset().left;
         y = e.pageY - this.offsetTop;// - this.offset().top;
-        alert(x + " " + e.pageX);
         self.curMousePosition = new Point(x | 0 ,y | 0);
     });
     $('body').on('mouseup', function () {
