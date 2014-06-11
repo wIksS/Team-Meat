@@ -97,35 +97,22 @@ drawHorizontalSeparator(); // <------------- separator between fill/stroke contr
 
 
 //  Iнput type color
+
 var body = document.querySelector('body');
 var input = document.createElement('input');
 input.setAttribute("type", "color");
 input.setAttribute("id", "setColor");
 body.appendChild(input).style.visibility = "hidden";
+
 var input = document.querySelector('#setColor');
 createControl(currentControlX, currentControlY, 'colorSelector', drawRectInnerPicture).attr({
     fill: input.value
 }).node.id = 'colorSelectorInner';
 
-/*
-$('#colorSelector').on('click', function () {
-    input.click();
-    $($('#colorSelectorInner')).attr({
-        fill: input.value
-    });
-});
-$('#colorSelectorInner').on('click', function () {
-    input.click();
-    $($('#colorSelectorInner')).attr({
-        fill: input.value
-    });
-});
-*/
 var getColorFromInput = input.value;
 
 attachColorSelectEvent('colorSelector', getColorFromInput);
 attachColorSelectEvent('colorSelectorInner', getColorFromInput);
-//input.click();
 
 //--------------
 var colorPalette = [
@@ -148,7 +135,7 @@ var colorPalette = [
 
 drawColorPalette(colorPalette);
 
-function drawColorPalette(colorPalette){
+function drawColorPalette(colorPalette) {
     for (var i = 0; i < colorPalette.length; i++) {
 
         var colorName = colorPalette[i].name + 'Color';
@@ -236,7 +223,7 @@ function drawRectInnerPicture(x, y) {
     var pictureY = y + (controlsDefaultSize - pictureHeight) / 2;
 
     var rectanglePicture = paper.rect(pictureX, pictureY, pictureWidth, pictureHeight);
-    
+
     return rectanglePicture;
 }
 
@@ -348,6 +335,10 @@ function attachColorSelectEvent(colorControlId, color) {
         if (colorControlId === 'colorSelector' || colorControlId === 'colorSelectorInner') {
             var input = document.querySelector('input');
             input.click();
+
+            // TODO: Find better way! Catch closing of the input 
+            alert('Are you sure?');
+
             color = input.value;
             $($('#colorSelectorInner')).attr({
                 fill: color
