@@ -15,7 +15,7 @@
 #canvas-container
 {
     background: #fff;
-    border: 1px solid #bbb;
+    border: 2px solid #bbb;
 }
 
 #toolbox
@@ -24,4 +24,33 @@
     border: 1px solid #AAA;
     border-radius: 8px;
     background: url('/images/paper.png');
+}
+
+rect, circle, text
+{
+    cursor:pointer;
+    
+}
+
+#lineControl + path, #isoTriangleControl + path,
+#rightTriangleControl + path, #rightTriangleControl + path + path
+{
+    stroke-width:2px;
+}
+
+path
+{
+    stroke-width:0.3px;
+}
+
+#rectControl, #lineControl, #circleControl, #isoTriangleControl,
+#rightTriangleControl, #removeControl, #dragAndDropControl, #tubeControl,
+#strokeColor, #fillColor
+{
+    stroke-width:0.3px;
+}
+
+#fillColorInner
+{
+    stroke-width:1px;
 }
