@@ -1,45 +1,62 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Pork Paint - Release the Piggy Artist Inside You</title>
-    <link href="styles/index.css" rel="stylesheet" />
-    <script src="lib/kinetic-v5.1.0.min.js"></script>
-    <script src="lib/raphael-min.js"></script>
-</head>
-<body>
-    <div id="wrapper">
-        <a href="https://github.com/wIksS/Team-Meat"><img style="position: absolute; top: 0; right: 0; border: 0;" src="images/fork-me-on-github.png" alt="Fork me on GitHub"></a>
-        <div id="canvas-container">
+    <head>
+        <title>Pork Paint - Release the Piggy Artist Inside You</title>
+        <link href="styles/index.css" rel="stylesheet" />
+        <script src="lib/kinetic-v5.1.0.min.js"></script>
+        <script src="lib/raphael-min.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <a href="https://github.com/wIksS/Team-Meat">
+                <img style="position: absolute; top: 0; right: 0; border: 0;" src="images/fork-me-on-github.png" alt="Fork me on GitHub">
+            </a>
+            <div id="canvas-container">
 
+            </div>
+
+            <div id="toolbox">
+
+            </div>
+
+            <footer>
+                <a href="#openModal">How to Use</a>
+
+                <div id="openModal" class="modalDialog">
+                    <div>
+                        <a href="#close" title="Close" class="close">X</a>
+                        <h4>Paint on Canvas</h4>
+                        <p>Click a button which has this icon: X and drag your mouse on the canvas.</p>
+
+                        <h4>Draw Shape</h4>
+                        <p>Click a button which has this icon: X, move your pointer over the image, then drag and drop it.</p>
+
+                        <h4>Clear Canvas</h4>
+                        <p>Click a button which has this icon: X.</p>
+                    </div>
+                </div>
+            </footer>
         </div>
 
-        <div id="toolbox">
+        <script src="lib/jquery-2.1.1.js"></script>
+        <script src="lib/kinetic-v5.1.0.js"></script>
+        <script src="lib/raphael.js"></script>
 
-        </div>
-    </div>
+        <script src="scripts/shapes/shape.js"></script>
+        <script src="scripts/shapes/point.js"></script>
+        <script src="scripts/shapes/line.js"></script>
+        <script src="scripts/shapes/rectangle.js"></script>
+        <script src="scripts/shapes/isoscelesTriangle.js"></script>
+        <script src="scripts/shapes/rightTriangle.js"></script>
+        <script src="scripts/shapes/circle.js"></script>
 
-    <script src="lib/jquery-2.1.1.js"></script>
-    <script src="lib/kinetic-v5.1.0.js"></script>
-    <script src="lib/raphael.js"></script>
+        <script src="scripts/engine.js"></script>
+        <script src="scripts/toolbox.js"></script>
+        <script>
 
-    <script src="scripts/shapes/shape.js"></script>
-    <script src="scripts/shapes/point.js"></script>
-    <script src="scripts/shapes/line.js"></script>
-    <script src="scripts/shapes/rectangle.js"></script>
-    <script src="scripts/shapes/isoscelesTriangle.js"></script>
-    <script src="scripts/shapes/rightTriangle.js"></script>
-    <script src="scripts/shapes/circle.js"></script>
+            var eng = new Engine(); // REFACTOR! ENGINE IS CREATED 2 times!
 
+        </script>
 
-    <script src="scripts/engine.js"></script>
-    <script src="scripts/toolbox.js"></script>
-    <script>
-
-        var eng = new Engine(); // REFACTOR! ENGINE IS CREATED 2 times!
-
-    </script>
-
-
-   
-</body>
+    </body>
 </html>
