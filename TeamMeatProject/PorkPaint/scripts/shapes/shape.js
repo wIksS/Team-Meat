@@ -23,7 +23,10 @@ Shape.prototype.draw = function (shape) {
     self.curStage.add(self.layer);
 
     $('#canvas-container').on('mousemove', function (e) {
-        self.curMousePosition = new Point((e.pageX | 0) - self.marginLeft | 0, e.pageY - self.marginTop);
+        x = e.pageX - this.offsetLeft;//- this.offset().left;
+        y = e.pageY - this.offsetTop;// - this.offset().top;
+        alert(x + " " + e.pageX);
+        self.curMousePosition = new Point(x | 0 ,y | 0);
     });
     $('body').on('mouseup', function () {
         self.isMouseUp = true;

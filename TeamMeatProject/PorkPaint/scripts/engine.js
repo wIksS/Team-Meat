@@ -27,7 +27,10 @@ var Engine = function () {
     $('#canvas-container').on('mousedown', function (e) {
         var layer = new Kinetic.Layer();
         var figureProp = eng.getProperties();
-        var initMousePosition = new Point(e.pageX - totalOffsetX, e.pageY);
+
+        x = e.pageX - this.offsetLeft;
+        y = e.pageY - this.offsetTop;
+        var initMousePosition = new Point(x | 0,y|0);
 
         var shape = new Kinetic.Shape();
         shapes.push(shape);
