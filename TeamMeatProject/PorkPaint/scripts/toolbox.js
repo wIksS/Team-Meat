@@ -307,12 +307,11 @@ function drawHorizontalSeparator() {
 
 //Draw remove box inner marker
 function drawRemoveInnerPicture() {
-    var letterX = paper.text(225, 25, 'X');
-    letterX.attr({
-        'font-size': 12,
-        'font-weight': 'bold'
+    var cross = paper.path('M24.778,21.419 19.276,15.917 24.777,10.415 21.949,7.585 16.447,13.087 10.945,7.585 8.117,10.415 13.618,15.917 8.116,21.419 10.946,24.248 16.447,18.746 21.948,24.248z').attr({
+        fill: "#000", stroke: "none"
     });
-    return letterX;
+    cross.translate(209, 10);
+    return cross;
 }
 
 //Draw drag and drop box inner marker
