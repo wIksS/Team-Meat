@@ -55,7 +55,7 @@ path
     stroke-width:1px;
 }
 
-#removeControl + path
+#removeControl + path,  #dragAndDropControl + path, #tubeControl + path
 {
     fill: #000;
 }
