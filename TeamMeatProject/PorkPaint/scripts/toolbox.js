@@ -102,17 +102,20 @@ var body = document.querySelector('body');
 var input = document.createElement('input');
 input.setAttribute("type", "color");
 input.setAttribute("id", "setColor");
+input.setAttribute('onchange', 'setColorsToEngine(this.value);')
 body.appendChild(input).style.visibility = "hidden";
 
 var input = document.querySelector('#setColor');
 createControl(currentControlX, currentControlY, 'colorSelector', drawRectInnerPicture).attr({
     fill: input.value
-}).node.id = 'colorSelectorInner';
+}).node.id = 'colorSelectorInner'
 
-var getColorFromInput = input.value;
-
-attachColorSelectEvent('colorSelector', getColorFromInput);
-attachColorSelectEvent('colorSelectorInner', getColorFromInput);
+$('#colorSelector').on('click', function () {
+    input.click();
+});
+$('#colorSelectorInner').on('click', function () {
+    input.click();
+});
 
 //--------------
 var colorPalette = [
@@ -144,11 +147,17 @@ function drawColorPalette(colorPalette) {
         createControl(currentControlX, currentControlY, colorName).attr({
             fill: colorValue
         });
-        attachColorSelectEvent(colorName, colorValue);
+
+        attachEvent(colorName, colorValue);
     }
 }
 
-
+// Attaches event handlers to a color box
+function attachEvent(colorControlId, color) {
+    $('#' + colorControlId).on('click', function () {
+        setColorsToEngine(color);
+    });
+}
 
 // FUNCTIONS ********************************************* //
 // Creates a new shape control
@@ -331,45 +340,36 @@ function drawTubeInnerPicture() {
     bucket.translate(290, 10);
     return bucket;
 }
-// Attaches event handlers to a color box
-function attachColorSelectEvent(colorControlId, color) {
-    $('#' + colorControlId).on('click', function () {
-        if (colorControlId === 'colorSelector' || colorControlId === 'colorSelectorInner') {
-            var input = document.querySelector('input');
-            input.click();
 
-            // TODO: Find better way! Catch closing of the input 
-            alert('Are you sure?');
+//Send color to the engine
+function setColorsToEngine(color) {
+    $($('#colorSelectorInner')).attr({
+        fill: color
+    });
+    var set = eng.getColorFocus();
+    switch (set) {
+        case 'stroke':
+            eng.setOutlineColor(color);
+            break;
+        case 'fill':
+            eng.setFillColor(color);
+            break;
+    }
 
-            color = input.value;
-            $($('#colorSelectorInner')).attr({
+    switch (set) {
+        case 'stroke':
+            $('#strokeInnerPicture').attr({
+                stroke: color
+            });
+            break;
+        case 'fill':
+            $($('#fillColorInner')).attr({
                 fill: color
             });
-        }
-        var set = eng.getColorFocus();
-        switch (set) {
-            case 'stroke':
-                eng.setOutlineColor(color);
-                break;
-            case 'fill':
-                eng.setFillColor(color);
-                break;
-        }
-
-        switch (set) {
-            case 'stroke':
-                $('#strokeInnerPicture').attr({
-                    stroke: color
-                });
-                break;
-            case 'fill':
-                $($('#fillColorInner')).attr({
-                    fill: color
-                });
-                break;
-        }
-    });
+            break;
+    }
 }
+
 
 // Functions for drawing arcs with Raphael svg
 function arc(center, radius, startAngle, endAngle) {
