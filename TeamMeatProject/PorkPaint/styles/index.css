@@ -54,3 +54,8 @@ path
 {
     stroke-width:1px;
 }
+
+#removeControl + path
+{
+    fill: #000;
+}
