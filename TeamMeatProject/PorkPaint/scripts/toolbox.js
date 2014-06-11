@@ -304,6 +304,7 @@ function drawHorizontalSeparator() {
     currentControlY += controlsDefaultMargin;
     currentControlX = controlsDefaultMargin;
 }
+
 //Draw remove box inner marker
 function drawRemoveInnerPicture() {
     var letterX = paper.text(225, 25, 'X');
@@ -313,6 +314,7 @@ function drawRemoveInnerPicture() {
     });
     return letterX;
 }
+
 //Draw drag and drop box inner marker
 function drawDragAndDropInnerPicture() {
     var letterD = paper.text(265, 25, 'D');
@@ -321,6 +323,7 @@ function drawDragAndDropInnerPicture() {
     });
     return letterD;
 }
+
 //Draw tube box inner marker
 function drawTubeInnerPicture() {
     var letterT = paper.text(305, 25, 'T');
