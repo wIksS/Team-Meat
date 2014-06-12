@@ -69,8 +69,11 @@
     <Content Include="lib\raphael-min.js" />
     <Content Include="lib\raphael.js" />
     <Content Include="images\intro-pig.svg" />
+    <Content Include="scripts\controlEvents.js" />
+    <Content Include="scripts\drawingControls.js" />
     <Content Include="scripts\engine.js" />
     <Content Include="scripts\shapes\circle.js" />
+    <Content Include="scripts\creatingControls.js" />
     <Content Include="scripts\shapes\line.js" />
     <Content Include="scripts\shapes\point.js" />
     <Content Include="scripts\shapes\rectangle.js" />
