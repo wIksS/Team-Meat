@@ -90,6 +90,75 @@ $('#fillColorInner').on('click', function () {
 });
 // --------------- FILL CONTROL END --------------------
 
+// --------------- STROKE CONTROL Start --------------------
+controlName = 'strokeWidth1';
+createStrokeControl(controlName, 1, drawLineInnerPicture);
+controlName = 'strokeWidth3';
+createStrokeControl(controlName, 3, drawLineInnerPicture);
+controlName = 'strokeWidth5';
+createStrokeControl(controlName, 5, drawLineInnerPicture);
+controlName = 'strokeWidth10';
+createStrokeControl(controlName, 10, drawLineInnerPicture);
+
+$('#strokeWidth1').on('click', function () {
+    $('#strokeWidth1').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+    $('#strokeWidth3').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth5').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth10').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+});
+$('#strokeWidth3').on('click', function () {
+    $('#strokeWidth1').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth3').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+    $('#strokeWidth5').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth10').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+});
+$('#strokeWidth5').on('click', function () {
+    $('#CostrokeWidth1').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth3').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth5').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+    $('#strokeWidth10').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+});
+$('#strokeWidth10').on('click', function () {
+    $('#CostrokeWidth1').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth3').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth5').attr({
+        fill: controlsDefaultBackgroundColor
+    });
+    $('#strokeWidth10').attr({
+        fill: controlsDefaultSelectedBackgroundColor
+    });
+});
+
+// --------------- STROKE CONTROL END --------------------
+
 drawHorizontalSeparator(); // <------------- separator between fill/stroke controls and colors controls
 
 // COLORS CONTORLS *************************************************************
@@ -166,6 +235,15 @@ function createShapeControl(name, shape, drawInnerPictureFunc) {
     createControl(currentControlX, currentControlY, controlName, drawInnerPictureFunc);
     $('#' + controlName).on('click', function () {
         eng.setShape(shape);
+    });
+}
+
+function createStrokeControl(name, strokeWidth, drawInnerPictureFunc) {
+    controlName = name;
+    createControl(currentControlX, currentControlY, controlName, drawInnerPictureFunc);
+    $('#' + controlName).on('click', function () {
+        eng.setOutlineWidth(strokeWidth);
+
     });
 }
 

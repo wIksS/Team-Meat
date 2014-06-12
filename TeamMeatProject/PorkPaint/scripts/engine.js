@@ -4,7 +4,7 @@ var Engine = function () {
     var toolType = 'circle';
     var fillColor = 'yellowgreen';
     var outlineColor = 'blue';
-    var outlineWidth = 10;
+    var outlineWidth = 5;
 
     var setColorTo = 'stroke';
 
