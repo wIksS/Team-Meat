@@ -46,7 +46,7 @@ path
 
 #rectControl, #lineControl, #circleControl, #isoTriangleControl,
 #rightTriangleControl, #removeControl, #dragAndDropControl, #tubeControl,
-#strokeColor, #fillColor
+#strokeColor, #fillColor, #strokeWidth1, #strokeWidth3, #strokeWidth5, #strokeWidth10
 {
     stroke-width:0.3px;
 }
@@ -60,6 +60,26 @@ path
 {
     fill: #000;
 }
+
+#strokeWidth1 + path
+ {
+    stroke-width:1px;
+ }
+
+ #strokeWidth3 + path
+ {
+    stroke-width:3px;
+ }
+
+ #strokeWidth5 + path
+ {
+    stroke-width:5px;
+ }
+
+ #strokeWidth10 + path
+ {
+    stroke-width:10px;
+ }
 
 footer a {
     float: right;
