@@ -46,6 +46,10 @@ createShapeControl('tubeControl', 'tube', drawTubeInnerPicture);
 
 // Pencil control
 createShapeControl('pencilControl', 'pencil', drawIsoTriangleInnerPicture);
+
+//Saving Control
+createControl(currentControlX, currentControlY, 'save', drawRectInnerPicture);
+
 // SHAPE CONTROLS *************************************************************
 
 drawHorizontalSeparator(); // <------------- separator between shape controls and fill/stroke controls

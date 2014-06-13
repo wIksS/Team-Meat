@@ -66,6 +66,8 @@
     <Content Include="intro.html" />
     <Content Include="lib\kinetic-v5.1.0.js" />
     <Content Include="lib\kinetic-v5.1.0.min.js" />
+    <Content Include="lib\base64.js" />
+    <Content Include="lib\nihilogic.js" />
     <Content Include="lib\raphael-min.js" />
     <Content Include="lib\raphael.js" />
     <Content Include="images\intro-pig.svg" />

@@ -24,7 +24,7 @@ var Engine = function () {
         height: 400
     });
     // **************************
-
+    
 
     $('#canvas-container').on('mousedown', function (e) {
         var layer = new Kinetic.Layer();
@@ -92,6 +92,19 @@ var Engine = function () {
         });
     }
 
+    function sevaStageToIMG()
+    {
+        console.log('saving stage');
+        stage.toDataURL({
+            callback: function(dataUrl) {
+                var download = document.createElement('a');
+                download.setAttribute('href', dataUrl);
+                download.setAttribute('download', 'Image.png');
+                download.click();
+            }
+        });
+    }
+
     return {
         setShape: function (type) {
             toolType = type;
@@ -129,6 +142,10 @@ var Engine = function () {
         },
         getCanvasOffset: function () {
             return totalOffset;
+        },
+        saveStage: function () {
+            
+           return sevaStageToIMG();
         }
     }
 }
