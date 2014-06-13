@@ -51,6 +51,8 @@ var Engine = function () {
         var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX,totalOffSetY );
       
         switch (figureProp.tool) {
+            case 'pencil': newFigure.drawPencil();
+                break;
             case 'rect': newFigure.drawRectangle();
                 break;
             case 'circle': newFigure.drawCircle();
