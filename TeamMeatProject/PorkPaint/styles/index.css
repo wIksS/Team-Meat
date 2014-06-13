@@ -34,7 +34,8 @@ rect, circle, text
 }
 
 #lineControl + path, #isoTriangleControl + path,
-#rightTriangleControl + path, #rightTriangleControl + path + path
+#rightTriangleControl + path, #rightTriangleControl + path + path,
+#pencilControl + path
 {
     stroke-width:2px;
 }
@@ -46,7 +47,8 @@ path
 
 #rectControl, #lineControl, #circleControl, #isoTriangleControl,
 #rightTriangleControl, #removeControl, #dragAndDropControl, #tubeControl,
-#strokeColor, #fillColor, #strokeWidth1, #strokeWidth3, #strokeWidth5, #strokeWidth10
+#strokeColor, #fillColor, #strokeWidth1, #strokeWidth3, #strokeWidth5, #strokeWidth10,
+#pencilControl
 {
     stroke-width:0.3px;
 }

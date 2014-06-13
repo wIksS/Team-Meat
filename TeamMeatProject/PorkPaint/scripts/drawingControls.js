@@ -153,6 +153,7 @@ function drawDragAndDropInnerPicture() {
         fill: "#000", stroke: "none"
     });
     hand.translate(250, 10);
+    hand.scale(0.9, 0.9);
     return hand;
 }
 
@@ -162,8 +163,20 @@ function drawTubeInnerPicture() {
         fill: "#000", stroke: "none"
     });
     bucket.translate(290, 10);
+    bucket.scale(0.8, 0.9);
     return bucket;
 }
+
+//Draw pencil inner picture
+function drawPencilInnerPicture() {
+    var pencil = paper.path('M25.31,2.872l-3.384-2.127c-0.854-0.536-1.979-0.278-2.517,0.576l-1.334,2.123l6.474,4.066l1.335-2.122C26.42,4.533,26.164,3.407,25.31,2.872zM6.555,21.786l6.474,4.066L23.581,9.054l-6.477-4.067L6.555,21.786zM5.566,26.952l-0.143,3.819l3.379-1.787l3.14-1.658l-6.246-3.925L5.566,26.952z').attr({
+        fill: "#000", stroke: "none"
+    });
+    pencil.translate(330, 10);
+    pencil.scale(0.8, 0.8);
+    return pencil;
+}
+
 // Functions for drawing arcs with Raphael svg
 function arc(center, radius, startAngle, endAngle) {
     angle = startAngle;

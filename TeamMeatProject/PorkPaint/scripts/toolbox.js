@@ -45,7 +45,7 @@ createShapeControl('dragAndDropControl', 'dragAndDrop', drawDragAndDropInnerPict
 createShapeControl('tubeControl', 'tube', drawTubeInnerPicture);
 
 // Pencil control
-createShapeControl('pencilControl', 'pencil', drawIsoTriangleInnerPicture);
+createShapeControl('pencilControl', 'pencil', drawPencilInnerPicture);
 // SHAPE CONTROLS *************************************************************
 
 drawHorizontalSeparator(); // <------------- separator between shape controls and fill/stroke controls
