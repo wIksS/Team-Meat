@@ -5,6 +5,7 @@ var Engine = function () {
     var fillColor = 'yellowgreen';
     var outlineColor = 'blue';
     var outlineWidth = 5;
+    var tubeColor= 'black';
 
     var setColorTo = 'stroke';
 
@@ -44,7 +45,8 @@ var Engine = function () {
         layer.add(shape);
 
         addRemoveEvent(shape, layer);
-        addTube(shape, layer, 'red');
+
+        addTube(shape, layer);
 
         var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX,totalOffSetY );
       
@@ -77,11 +79,10 @@ var Engine = function () {
         }
     }
 
-    function addTube(shape, layer, color) {
+    function addTube(shape, layer) {
         shape.on('click', function (){
             if (toolType == 'tube') {
-                //alert(color);
-                this.fill(color);
+                this.fill(tubeColor);
                 layer.draw();
             }
         });
@@ -106,6 +107,10 @@ var Engine = function () {
         setColorFocus: function (colorToSetOnPaletteClick) {
             setColorTo = colorToSetOnPaletteClick;
             console.log(colorToSetOnPaletteClick);
+        },
+        setTubeColor: function (color) {
+            tubeColor = color;
+            console.log("Set tube color to " + color);
         },
         getColorFocus: function () {
             return setColorTo;

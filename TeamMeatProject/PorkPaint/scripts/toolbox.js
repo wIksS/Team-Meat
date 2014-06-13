@@ -140,9 +140,11 @@ function setColorsToEngine(color) {
     switch (set) {
         case 'stroke':
             eng.setOutlineColor(color);
+            eng.setTubeColor(color);
             break;
         case 'fill':
             eng.setFillColor(color);
+            eng.setTubeColor(color);
             break;
     }
 

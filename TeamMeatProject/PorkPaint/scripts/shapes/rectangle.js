@@ -11,7 +11,7 @@
             currentX = self.curMousePosition.x | 0,
             currentY = self.curMousePosition.y | 0;
         if (initX < currentX) {
-            debugger;
+            //debugger;
             var difference = currentX - initX;
             thirdPoint = initX + (currentX - initX) / 2;
         }
