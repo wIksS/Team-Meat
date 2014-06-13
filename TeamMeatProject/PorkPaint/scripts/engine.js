@@ -44,6 +44,7 @@ var Engine = function () {
         layer.add(shape);
 
         addRemoveEvent(shape, layer);
+        addTube(shape, layer, 'red');
 
         var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX,totalOffSetY );
       
@@ -74,6 +75,16 @@ var Engine = function () {
         for (var i = 0; i < shapes.length; i++) {
             shapes[i].setDraggable(isDrag);
         }
+    }
+
+    function addTube(shape, layer, color) {
+        shape.on('click', function (){
+            if (toolType == 'tube') {
+                //alert(color);
+                this.fill(color);
+                layer.draw();
+            }
+        });
     }
 
     return {
