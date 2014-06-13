@@ -88,3 +88,8 @@ $('#colorSelectorInner').on('click', function () {
     input.click();
 });
 
+$('#save').on('click', function () {
+    console.log('save');
+    var saveImage = eng.saveStage;
+    saveImage();
+});

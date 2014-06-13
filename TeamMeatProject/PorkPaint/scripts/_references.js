@@ -10,3 +10,7 @@
 /// <reference path="shapes/point.js" />
 /// <reference path="shapes/rectangle.js" />
 /// <reference path="shapes/righttriangle.js" />
+/// <reference path="controlevents.js" />
+/// <reference path="creatingcontrols.js" />
+/// <reference path="drawingcontrols.js" />
+/// <reference path="shapes/shape.js" />
