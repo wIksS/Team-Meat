@@ -10,6 +10,7 @@ var Engine = function () {
     var setColorTo = 'stroke';
 
     var shapes = [];
+   // var lines = [];
 
     var toolbox = document.getElementById('toolbox')
     var totalOffsetX = toolbox.offsetWidth -490;
@@ -31,7 +32,7 @@ var Engine = function () {
 
         x = e.pageX - this.offsetLeft;
         y = e.pageY - this.offsetTop;
-        var initMousePosition = new Point(x | 0,y|0);
+        var initMousePosition = new Point(x | 0, y | 0);
 
         var shape = new Kinetic.Shape();
         shapes.push(shape);
@@ -48,16 +49,17 @@ var Engine = function () {
 
         addTube(shape, layer);
 
-        var newFigure = new Shape(stage, shape,figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX,totalOffSetY );
-      
+        var newFigure = new Shape(stage, shape, figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX, totalOffSetY),
+             newLine = new LineDrawer(stage, shape, figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX, totalOffSetY);
+        
         switch (figureProp.tool) {
-            case 'pencil': newFigure.drawPencil();
+            case 'pencil': newLine.drawPencil();
                 break;
             case 'rect': newFigure.drawRectangle();
                 break;
             case 'circle': newFigure.drawCircle();
                 break;
-            case 'line': newFigure.drawLine();
+            case 'line': newLine.drawLine();
                 break;
             case 'isoTriangle': newFigure.drawIsoscelesTriangle();
                 break;

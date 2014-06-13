@@ -75,6 +75,8 @@
     <Content Include="scripts\shapes\circle.js" />
     <Content Include="scripts\creatingControls.js" />
     <Content Include="scripts\shapes\line.js" />
+    <Content Include="scripts\shapes\linedrawer.js" />
+    <Content Include="scripts\shapes\pencil.js" />
     <Content Include="scripts\shapes\point.js" />
     <Content Include="scripts\shapes\rectangle.js" />
     <Content Include="scripts\shapes\isoscelesTriangle.js" />

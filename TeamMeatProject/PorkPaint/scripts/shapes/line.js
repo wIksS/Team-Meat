@@ -1,6 +1,6 @@
-﻿Shape.prototype.drawLine = function () {
+﻿LineDrawer.prototype.drawLine = function () {
     var self = this;
-    Shape.prototype.draw.call(self);
+    LineDrawer.prototype.draw.call(self);
     var anim = new Kinetic.Animation(function (frame) {
         var time = frame.time,
             timeDiff = frame.timeDiff,

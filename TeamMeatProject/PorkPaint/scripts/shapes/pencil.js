@@ -1,9 +1,9 @@
 ﻿//Creates shapes by drawing a line that follows mouse path while mouse is clicked
-Shape.prototype.drawPencil = function () {
+LineDrawer.prototype.drawPencil = function () {
     var self = this,
         points = [];
-    Shape.prototype.draw.call(self);  
-    var anim = new Kinetic.Animation(function (frame) {
+    LineDrawer.prototype.draw.call(self);
+    var anim = new Kinetic.Animation(function (frame) {  
         var time = frame.time,
             timeDiff = frame.timeDiff,
             frameRate = frame.frameRate,
@@ -20,7 +20,8 @@ Shape.prototype.drawPencil = function () {
                 context.lineTo(points[i].x, points[i].y);
             }
             //context.closePath();
-            //context.stroke();
+            //context.strokeStyle = this;
+           // context.stroke();
             context.fillStrokeShape(this);
         });
         if (self.isMouseUp) {
