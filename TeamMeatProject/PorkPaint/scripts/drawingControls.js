@@ -177,6 +177,54 @@ function drawPencilInnerPicture() {
     return pencil;
 }
 
+// Added to draw rectangle with rounded corners
+Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4) {
+    var array = [];
+    array = array.concat(["M", x, r1 + y, "Q", x, y, x + r1, y]); //A
+    array = array.concat(["L", x + w - r2, y, "Q", x + w, y, x + w, y + r2]); //B
+    array = array.concat(["L", x + w, y + h - r3, "Q", x + w, y + h, x + w - r3, y + h]); //C
+    array = array.concat(["L", x + r4, y + h, "Q", x, y + h, x, y + h - r4, "Z"]); //D
+
+    return this.path(array);
+};
+
+
+// Draws a diskette in a control box by given x, y of the control box
+function drawSaveInnerPicture(x, y) {
+    var padding = controlsDefaultSize / 5; // guarantees central positioning
+    // Width and height are different in order to visualize a rectange, not a square
+    var pictureWidth = controlsDefaultSize - 2 * padding;
+    var pictureHeight = controlsDefaultSize - 2.2 * padding;
+
+    var pictureX = x + padding;
+    var pictureY = y + (controlsDefaultSize - pictureHeight) / 2;
+
+    var pict1 = paper.rect(pictureX, pictureY, pictureWidth, pictureHeight).attr({
+        'stroke-width': 0.9
+    });
+
+    var pict2padding = controlsDefaultSize / 10;
+    var pic2Width = pictureWidth - 2 * pict2padding;
+    var pic2Height = pictureHeight / 1.5 -  pict2padding;
+    var pic2X = pictureX + pict2padding;
+    var pic2Y = pictureY;
+    var pic2 = paper.roundedRectangle(pic2X, pic2Y, pic2Width, pic2Height, 0, 0, 1, 1).attr({
+        'stroke-width': 2
+    });
+    
+    var pic3Width = pic2Width / 3.4 - pict2padding;
+    var pic3Height = pic2Height / 1.32 - pict2padding;
+    var pic3X = x + controlsDefaultSize / 1.764;
+    var pic3Y = pic2Y + pict2padding - 0.3;
+    var pic3 = paper.rect(pic3X, pic3Y, pic3Width, pic3Height).attr({
+        'stroke-width': 1,
+        stroke: '#aeadad'
+    });
+   
+    return pic3;
+}
+
+
 // Functions for drawing arcs with Raphael svg
 function arc(center, radius, startAngle, endAngle) {
     angle = startAngle;
