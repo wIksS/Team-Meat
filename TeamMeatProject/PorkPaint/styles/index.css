@@ -48,7 +48,7 @@ path
 #rectControl, #lineControl, #circleControl, #isoTriangleControl,
 #rightTriangleControl, #removeControl, #dragAndDropControl, #tubeControl,
 #strokeColor, #fillColor, #strokeWidth1, #strokeWidth3, #strokeWidth5, #strokeWidth10,
-#pencilControl
+#pencilControl, #save
 {
     stroke-width:0.3px;
 }
