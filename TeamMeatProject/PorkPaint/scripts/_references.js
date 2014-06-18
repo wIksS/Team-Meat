@@ -14,3 +14,6 @@
 /// <reference path="creatingcontrols.js" />
 /// <reference path="drawingcontrols.js" />
 /// <reference path="shapes/shape.js" />
+/// <reference path="shapes/linedrawer.js" />
+/// <reference path="shapes/pencil.js" />
+/// <reference path="shapes/spray.js" />

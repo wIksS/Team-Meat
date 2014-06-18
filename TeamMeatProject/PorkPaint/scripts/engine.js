@@ -50,10 +50,12 @@ var Engine = function () {
         addTube(shape, layer);
 
         var newFigure = new Shape(stage, shape, figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX, totalOffSetY),
-             newLine = new LineDrawer(stage, shape, figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX, totalOffSetY);
+            newLine = new LineDrawer(stage, shape, figureProp.stroke, figureProp.fill, figureProp.strokeWidth, initMousePosition, layer, totalOffsetX, totalOffSetY);
         
-        switch (figureProp.tool) {
+        switch (figureProp.tool) {     
             case 'pencil': newLine.drawPencil();
+                break;
+            case 'webPencil': newLine.drawWebPencil();
                 break;
             case 'rect': newFigure.drawRectangle();
                 break;

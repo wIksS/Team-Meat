@@ -176,6 +176,16 @@ function drawPencilInnerPicture() {
     pencil.scale(0.8, 0.8);
     return pencil;
 }
+//Draw webPencil iner picture
+function drawWebPencilInnerPicture() {
+    var webPencil = paper.path('M25.31,2.872l-3.384-2.127c-0.854-0.536-1.979-0.278-2.517,0.576l-1.334,2.123l6.474,4.066l1.335-2.122C26.42,4.533,26.164,3.407,25.31,2.872zM6.555,21.786l6.474,4.066L23.581,9.054l-6.477-4.067L6.555,21.786zM5.566,26.952l-0.143,3.819l3.379-1.787l3.14-1.658l-6.246-3.925L5.566,26.952z').attr({
+        fill: "#000", stroke: "none"
+    });
+    webPencil.translate(370, 10);
+    webPencil.scale(0.8, 0.8);
+    return webPencil;
+}
+
 
 // Added to draw rectangle with rounded corners
 Raphael.fn.roundedRectangle = function (x, y, w, h, r1, r2, r3, r4) {
